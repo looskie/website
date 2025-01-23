@@ -10,7 +10,7 @@ export default function Document() {
         <script
           src="https://js.cside.dev/script.js"
           referrerPolicy="origin"
-          data-options='{"ENABLE_FIRST_PARTY_PROXY": true}'
+          data-options='{"ENABLE_FIRST_PARTY_PROXY": false}'
         />
         <meta charSet="UTF-8" />
         <meta
