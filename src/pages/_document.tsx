@@ -7,7 +7,11 @@ export default function Document() {
     <Html lang="en">
       <Head>
         {/* <CSideScript /> */}
-        <script src="https://js.cside.dev/script.js" />
+        <script
+          src="https://js.cside.dev/script.js"
+          referrerPolicy="origin"
+          data-options='{"ENABLE_FIRST_PARTY_PROXY": true}'
+        />
         <meta charSet="UTF-8" />
         <meta
           name="keywords"
