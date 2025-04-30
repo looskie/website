@@ -23,7 +23,7 @@ export default function About() {
         <AnimatedText element="h1" text="About" />
       </div>
       <p>
-        hey, i'm cody, a 19 year old software engineer and designer based in
+        hey, i'm cody, a 20 year old software engineer and designer based in
         the united states. i strive to build unique and polished web interfaces
         for both consumer and business ends. i love lacrosse, capybaras, and
         writing open source software!
