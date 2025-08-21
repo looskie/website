@@ -8,9 +8,8 @@ export default function Document() {
       <Head>
         {/* <CSideScript /> */}
         <script
-          src="https://js.cside.dev/script.js"
+          src="https://proxy.csidetm.com/script.js"
           referrerPolicy="origin"
-          data-options='{"ENABLE_FIRST_PARTY_PROXY": false}'
         />
         <meta charSet="UTF-8" />
         <meta
