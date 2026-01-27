@@ -16,15 +16,17 @@ type Work = {
   position: string;
   link?: string;
   description: string;
+  dates?: string;
 };
 
 const WORK: Work[] = [
   {
     company: "c/side",
     position: "Fullstack Engineer",
-    link: "https://cside.dev/",
+    link: "https://cside.com/",
     description:
-      "Monitor, secure, and optimize your 3rd party scripts on your website with c/side. You'll know what gets delivered to your user's browser 100% of the time.",
+      "Client-side security platform that helps you monitor and secure your web applications.",
+    dates: "Jan 2024 - Feb 2026",
   },
   {
     company: "Bloom",
@@ -32,6 +34,7 @@ const WORK: Work[] = [
     link: "https://bloomapp.com",
     description:
       "Bloom is an app that helps you learn to invest for building wealth long-term.",
+    dates: "Jan 2024 - Apr 2024",
   },
   {
     company: "Hop Inc.",
@@ -39,6 +42,7 @@ const WORK: Work[] = [
     link: "https://hop.io",
     description:
       "Hop is a cloud provider that enables you to deploy any service to the cloud. No more configs, no more fuss, just push your code.",
+    dates: "Mar 2022 - Feb 2024",
   },
   {
     company: "Giggl Inc.",
@@ -46,27 +50,7 @@ const WORK: Work[] = [
     link: "https://giggl.app",
     description:
       "From hosting virtual movie nights, browsing the web with friends or watching anime with your long-distance partner: Giggl lets you do that together in real-time.",
-  },
-  {
-    company: "IMPERIAL",
-    position: "Design & Founder/Fullstack Engineer",
-    link: "https://imperialb.in",
-    description:
-      "IMPERIAL is a code/text storing site where you can share, edit, or encrypt documents.",
-  },
-  {
-    company: "Capybara API",
-    position: "Fullstack Engineer",
-    link: "https://capy.lol/",
-    description:
-      "capy.lol is a free, open-source API that allows you to generate random images of capybaras.",
-  },
-  {
-    company: "dahliaOS",
-    position: "Frontend Engineer",
-    link: "https://dahliaos.io",
-    description:
-      "dahliaOS is a modern, open-source operating system for personal computers, powered by Flutter.",
+    dates: "Oct 2021 - Mar 2022",
   },
   {
     company: "Gumroad Inc.",
@@ -74,7 +58,63 @@ const WORK: Work[] = [
     link: "https://gumroad.com",
     description:
       "Gumroad is a platform for creators to sell directly to their audience.",
-  }
+    dates: "Aug 2021",
+  },
+];
+
+type OSS = {
+  name: string;
+  role: string;
+  link: string;
+  description: string;
+};
+
+const OSS: OSS[] = [
+  {
+    name: "clickhouse-js",
+    role: "Contributor",
+    link: "https://github.com/ClickHouse/clickhouse-js",
+    description: "A ClickHouse client for JavaScript environments.",
+  },
+  {
+    name: "worker-lb",
+    role: "Creator",
+    link: "https://github.com/lawgdev/worker-lb",
+    description: "A load balancer for Cloudflare Workers.",
+  },
+  {
+    name: "IMPERIAL",
+    role: "Creator",
+    link: "https://imperialb.in",
+    description:
+      "A code/text storing site where you can share, edit, or encrypt documents.",
+  },
+  {
+    name: "Capybara API",
+    role: "Creator",
+    link: "https://capy.lol/",
+    description:
+      "A free, open-source API that allows you to generate random images of capybaras.",
+  },
+  {
+    name: "Kaito",
+    role: "Core Contributor",
+    link: "https://github.com/kaito-http/kaito",
+    description: "A small and lightweight HTTP server framework.",
+  },
+  {
+    name: "trunkate",
+    role: "Creator",
+    link: "https://github.com/looskie/trunkate",
+    description: "A React package to help truncate React elements.",
+  },
+  {
+    name: "dahliaOS",
+    role: "Core Contributor",
+    link: "https://dahliaos.io",
+    description:
+      "An intuitive operating system with a modern user interface, powered by Flutter.",
+  },
 ];
 
 export {
@@ -85,5 +125,6 @@ export {
   INSTAGRAM,
   DISCORD_ID,
   WORK,
+  OSS,
   fullTwConfig,
 };
