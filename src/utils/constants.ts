@@ -13,6 +13,7 @@ const DISCORD_ID = "207204046115831809";
 
 type Work = {
   company: string;
+  subtitle?: string;
   position: string;
   link?: string;
   description: string;
@@ -37,20 +38,13 @@ const WORK: Work[] = [
     dates: "Jan 2024 - Apr 2024",
   },
   {
-    company: "Hop Inc.",
-    position: "Design & Frontend Engineer",
+    company: "Hop, Inc.",
+    subtitle: "Formerly Giggl",
+    position: "Design & Fullstack Engineer",
     link: "https://hop.io",
     description:
-      "Hop is a cloud provider that enables you to deploy any service to the cloud. No more configs, no more fuss, just push your code.",
-    dates: "Mar 2022 - Feb 2024",
-  },
-  {
-    company: "Giggl Inc.",
-    position: "Design & Mobile/Frontend Engineer",
-    link: "https://giggl.app",
-    description:
-      "From hosting virtual movie nights, browsing the web with friends or watching anime with your long-distance partner: Giggl lets you do that together in real-time.",
-    dates: "Oct 2021 - Mar 2022",
+      "Hop is a cloud provider that enables you to deploy any service to the cloud. Giggl was a co-browsing platform that let you watch movies and browse the web with friends in real-time.",
+    dates: "Oct 2021 - Feb 2024",
   },
   {
     company: "Gumroad Inc.",

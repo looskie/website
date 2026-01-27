@@ -30,6 +30,11 @@ export default function Work() {
             </span>
             <h2 className="text-5xl font-bold text-primary-100 mb-3">
               {work.company}
+              {work.subtitle ? (
+                <span className="text-lg font-normal text-primary-300 ml-2">
+                  ({work.subtitle})
+                </span>
+              ) : null}
               {work.dates ? (
                 <span className="text-lg font-normal text-primary-400 ml-3">
                   {work.dates}
