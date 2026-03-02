@@ -88,6 +88,9 @@ export function Spotify() {
         >
           <motion.div
             layout
+            style={{
+              borderRadius: 9999,
+            }}
             className="absolute -top-10 p-0.5 overflow-hidden bg-stone-200 min-w-48 max-w-md rounded-[9999px]"
           >
             <AnimatePresence mode="popLayout">
@@ -108,6 +111,9 @@ export function Spotify() {
 
             <motion.div
               layout
+              style={{
+                borderRadius: 9999,
+              }}
               className="relative flex gap-2 items-center bg-stone-100 overflow-hidden rounded-[9999px]"
             >
               <AnimatePresence mode="popLayout">
@@ -131,7 +137,7 @@ export function Spotify() {
                         </motion.div>
 
                         <img
-                          className="absolute size-16 left-0 top-0 z-0 blur-3xl"
+                          className="absolute size-18 left-0 top-0 z-0 blur-3xl"
                           src={data.spotify.album_art_url}
                           alt={`${data.spotify.song} by ${data.spotify.artist}`}
                         />
@@ -158,7 +164,7 @@ export function Spotify() {
                   <motion.div
                     layout
                     key={i}
-                    className="bg-green-500 w-0.5 rounded-full origin-bottom will-change-transform h-2.5"
+                    className="bg-green-500 w-0.5 rounded-full origin-center will-change-transform h-2.5"
                     animate={EQUALIZER_ANIMATION.animate}
                     transition={{
                       ...EQUALIZER_ANIMATION.transition,

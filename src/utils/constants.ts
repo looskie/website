@@ -20,6 +20,14 @@ export type Project = {
 export const DISCORD_SNOWFLAKE = "207204046115831809";
 
 export const WORK_ITEMS: readonly WorkItem[] = [
+  // {
+  //   company: "Meter",
+  //   slug: "meter",
+  //   role: "fullstack engineer",
+  //   date: "mar 2026 - present",
+  //   about: "enterprise networking built from the ground up.",
+  //   url: "https://meter.com",
+  // },
   {
     company: "cside",
     slug: "cside",
@@ -73,14 +81,6 @@ export const PROJECTS: readonly Project[] = [
     url: "https://github.com/lawgdev/worker-lb",
   },
   {
-    name: "IMPERIAL",
-    slug: "imperial",
-    role: "creator",
-    about:
-      "a code/text storing site where you can share, edit, or encrypt documents",
-    url: "https://imperialb.in",
-  },
-  {
     name: "Capybara API",
     slug: "capybara-api",
     role: "creator",
@@ -100,6 +100,14 @@ export const PROJECTS: readonly Project[] = [
     role: "creator",
     about: "a React package to help truncate React elements",
     url: "https://github.com/looskie/trunkate",
+  },
+  {
+    name: "IMPERIAL",
+    slug: "imperial",
+    role: "creator",
+    about:
+      "a code/text storing site where you can share, edit, or encrypt documents",
+    url: "https://imperialb.in",
   },
   {
     name: "dahliaOS",

@@ -58,6 +58,7 @@ export function Marquee({
                 repeatType: "mirror",
                 ease: [0.4, 0, 0.2, 1],
                 repeatDelay: 1.5,
+                delay: 1.5,
               }
             : undefined
         }
