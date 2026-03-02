@@ -84,7 +84,7 @@ export function Spotify() {
           initial={SPOTIFY_PILL_ANIMATION.initial}
           exit={SPOTIFY_PILL_ANIMATION.initial}
           transition={SPOTIFY_PILL_ANIMATION.transition}
-          className="will-change-[transform,opacity,filter] grid" // for whatever reason, this needs to be grid... otherwise safari has a spazm, bit too lazy to find out why...
+          className="will-change-[transform,opacity,filter] grid" // for whatever reason, this needs to be grid... otherwise safari has a spazm, bit too lazy to find out why... its gotta do with something with the LayoutGroup though.
         >
           <motion.div
             layout
