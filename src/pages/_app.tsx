@@ -143,7 +143,6 @@ export default function App({ Component, pageProps, router }: AppProps) {
               transition={NAME_WRAPPER_SPRING_CONFIG}
             >
               {expanded ? <Spotify /> : null}
-
               <motion.h1
                 layout
                 ref={ref}
