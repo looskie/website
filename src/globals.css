@@ -1,0 +1,177 @@
+@import "tailwindcss";
+
+/* redaction font family */
+@font-face {
+  font-family: "Redaction";
+  src: url("/fonts/Redaction-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Redaction";
+  src: url("/fonts/Redaction-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Redaction";
+  src: url("/fonts/Redaction-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* redaction 10 */
+@font-face {
+  font-family: "Redaction 10";
+  src: url("/fonts/Redaction_10-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Redaction 10";
+  src: url("/fonts/Redaction_10-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Redaction 10";
+  src: url("/fonts/Redaction_10-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* redaction 20 */
+@font-face {
+  font-family: "Redaction 20";
+  src: url("/fonts/Redaction_20-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Redaction 20";
+  src: url("/fonts/Redaction_20-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Redaction 20";
+  src: url("/fonts/Redaction_20-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* redaction 35 */
+@font-face {
+  font-family: "Redaction 35";
+  src: url("/fonts/Redaction_35-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Redaction 35";
+  src: url("/fonts/Redaction_35-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Redaction 35";
+  src: url("/fonts/Redaction_35-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* redaction 50 */
+@font-face {
+  font-family: "Redaction 50";
+  src: url("/fonts/Redaction_50-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Redaction 50";
+  src: url("/fonts/Redaction_50-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Redaction 50";
+  src: url("/fonts/Redaction_50-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* redaction 70 */
+@font-face {
+  font-family: "Redaction 70";
+  src: url("/fonts/Redaction_70-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Redaction 70";
+  src: url("/fonts/Redaction_70-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Redaction 70";
+  src: url("/fonts/Redaction_70-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* redaction 100 */
+@font-face {
+  font-family: "Redaction 100";
+  src: url("/fonts/Redaction_100-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Redaction 100";
+  src: url("/fonts/Redaction_100-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Redaction 100";
+  src: url("/fonts/Redaction_100-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@theme {
+  --font-sans: "Redaction", sans-serif;
+  --font-heading: "Redaction 50", sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+}
+
+html {
+  @apply bg-stone-100!;
+}

@@ -1,124 +1,130 @@
-import resolveConfig from "tailwindcss/resolveConfig";
-import tailwindConfig from "../../tailwind.config";
-
-const fullTwConfig = resolveConfig(tailwindConfig);
-
-const EMAIL = "hello@looskie.com";
-const GITHUB = "https://github.com/looskie";
-const TWITTER = "https://twitter.com/devlooskie";
-const LINKEDIN = "https://linkedin.com/in/devlooskie/";
-const INSTAGRAM = "https://instagram.com/devlooskie";
-
-const DISCORD_ID = "207204046115831809";
-
-type Work = {
+export type WorkItem = {
   company: string;
-  subtitle?: string;
-  position: string;
-  link?: string;
-  description: string;
-  dates?: string;
+  slug: string;
+  role: string;
+  date: string;
+  about: string;
+  url: string;
+  image?: string;
 };
 
-const WORK: Work[] = [
+export type Project = {
+  name: string;
+  slug: string;
+  role: string;
+  about: string;
+  url: string;
+  image?: string;
+};
+
+export const DISCORD_SNOWFLAKE = "207204046115831809";
+
+export type Social = {
+  label: string;
+  href: string;
+};
+
+export const SOCIALS: readonly Social[] = [
+  { label: "GitHub", href: "https://github.com/looskie" },
+  { label: "X", href: "https://x.com/devlooskie" },
+  { label: "LinkedIn", href: "https://linkedin.com/in/devlooskie" },
+];
+
+export const WORK_ITEMS: readonly WorkItem[] = [
+  // {
+  //   company: "Meter",
+  //   slug: "meter",
+  //   role: "fullstack engineer",
+  //   date: "mar 2026 - present",
+  //   about: "enterprise networking built from the ground up.",
+  //   url: "https://meter.com",
+  // },
   {
-    company: "c/side",
-    position: "Fullstack Engineer",
-    link: "https://cside.com/",
-    description:
-      "Client-side security platform that helps you monitor and secure your web applications.",
-    dates: "Jan 2024 - Feb 2026",
+    company: "cside",
+    slug: "cside",
+    role: "fullstack engineer",
+    date: "jan 2024 — feb 2026",
+    about: "client-side security platform for monitoring and securing web apps",
+    url: "https://cside.com",
   },
   {
     company: "Bloom",
-    position: "Fullstack & Android Engineer",
-    link: "https://bloomapp.com",
-    description:
-      "Bloom is an app that helps you learn to invest for building wealth long-term.",
-    dates: "Jan 2024 - Apr 2024",
+    slug: "bloom",
+    role: "fullstack & android engineer",
+    date: "jan 2024 — apr 2024",
+    about:
+      "platform helping users learn investment strategies for long-term wealth",
+    url: "https://bloomapp.com",
   },
   {
-    company: "Hop, Inc.",
-    subtitle: "Formerly Giggl",
-    position: "Design & Fullstack Engineer",
-    link: "https://hop.io",
-    description:
-      "Hop is a cloud provider that enables you to deploy any service to the cloud. Giggl was a co-browsing platform that let you watch movies and browse the web with friends in real-time.",
-    dates: "Oct 2021 - Feb 2024",
+    company: "Hop (fmr. Giggl)",
+    slug: "hop",
+    role: "design & fullstack engineer",
+    date: "oct 2021 — feb 2024",
+    about:
+      "cloud provider for deploying services, previously a co-browsing platform",
+    url: "https://x.com/joinhop",
+    image: "hop_lander.png",
   },
   {
-    company: "Gumroad Inc.",
-    position: "Frontend Engineer",
-    link: "https://gumroad.com",
-    description:
-      "Gumroad is a platform for creators to sell directly to their audience.",
-    dates: "Aug 2021",
+    company: "Gumroad",
+    slug: "gumroad",
+    role: "frontend engineer",
+    date: "aug 2021",
+    about: "platform for creators to sell directly to their audience",
+    url: "https://gumroad.com",
   },
 ];
 
-type OSS = {
-  name: string;
-  role: string;
-  link: string;
-  description: string;
-};
-
-const OSS: OSS[] = [
+export const PROJECTS: readonly Project[] = [
   {
     name: "clickhouse-js",
-    role: "Contributor",
-    link: "https://github.com/ClickHouse/clickhouse-js",
-    description: "A ClickHouse client for JavaScript environments.",
+    slug: "clickhouse-js",
+    role: "contributor",
+    about: "a ClickHouse client for JavaScript environments",
+    url: "https://github.com/ClickHouse/clickhouse-js",
   },
   {
     name: "worker-lb",
-    role: "Creator",
-    link: "https://github.com/lawgdev/worker-lb",
-    description: "A load balancer for Cloudflare Workers.",
-  },
-  {
-    name: "IMPERIAL",
-    role: "Creator",
-    link: "https://imperialb.in",
-    description:
-      "A code/text storing site where you can share, edit, or encrypt documents.",
+    slug: "worker-lb",
+    role: "creator",
+    about: "a load balancer for Cloudflare Workers",
+    url: "https://github.com/lawgdev/worker-lb",
   },
   {
     name: "Capybara API",
-    role: "Creator",
-    link: "https://capy.lol/",
-    description:
-      "A free, open-source API that allows you to generate random images of capybaras.",
+    slug: "capybara-api",
+    role: "creator",
+    about: "a free, open-source API for generating random capybara images",
+    url: "https://capy.lol",
   },
   {
     name: "Kaito",
-    role: "Core Contributor",
-    link: "https://github.com/kaito-http/kaito",
-    description: "A small and lightweight HTTP server framework.",
+    slug: "kaito",
+    role: "core contributor",
+    about: "a small and lightweight HTTP server framework",
+    url: "https://github.com/kaito-http/kaito",
   },
   {
     name: "trunkate",
-    role: "Creator",
-    link: "https://github.com/looskie/trunkate",
-    description: "A React package to help truncate React elements.",
+    slug: "trunkate",
+    role: "creator",
+    about: "a React package to help truncate React elements",
+    url: "https://github.com/looskie/trunkate",
+  },
+  {
+    name: "IMPERIAL",
+    slug: "imperial",
+    role: "creator",
+    about:
+      "a code/text storing site where you can share, edit, or encrypt documents",
+    url: "https://imperialb.in",
   },
   {
     name: "dahliaOS",
-    role: "Core Contributor",
-    link: "https://dahliaos.io",
-    description:
-      "An intuitive operating system with a modern user interface, powered by Flutter.",
+    slug: "dahliaos",
+    role: "core contributor",
+    about: "an intuitive operating system with a modern UI, powered by Flutter",
+    url: "https://dahliaos.io",
   },
 ];
-
-export {
-  EMAIL,
-  TWITTER,
-  GITHUB,
-  LINKEDIN,
-  INSTAGRAM,
-  DISCORD_ID,
-  WORK,
-  OSS,
-  fullTwConfig,
-};
