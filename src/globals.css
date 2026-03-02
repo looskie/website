@@ -171,3 +171,7 @@ h2,
 h3 {
   font-family: var(--font-heading);
 }
+
+html {
+  @apply bg-stone-100;
+}

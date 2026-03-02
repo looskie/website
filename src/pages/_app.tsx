@@ -11,6 +11,7 @@ import {
   useTransform,
 } from "motion/react";
 import type { AppProps } from "next/app";
+import Head from "next/head";
 import { useEffect, useRef, useState } from "react";
 
 const NAME_WRAPPER_SPRING_CONFIG = {
@@ -43,6 +44,19 @@ const ANIMATION_STEPS = [
 const LAST_STEP = ANIMATION_STEPS.length - 1;
 const STEP_INDICES = ANIMATION_STEPS.map((_, i) => i);
 const STEP_SIZES = ANIMATION_STEPS.map((s) => s.size);
+
+const SITE_URL = "https://looskie.com";
+const SITE_TITLE = "cody";
+const SITE_DESCRIPTION = "my hole in the internet.";
+
+const JSON_LD = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Cody Miller",
+  url: SITE_URL,
+  jobTitle: "Software Engineer & Designer",
+  sameAs: ["https://github.com/looskie"],
+});
 
 export default function App({ Component, pageProps, router }: AppProps) {
   const ref = useRef<HTMLHeadingElement>(null);
@@ -84,7 +98,28 @@ export default function App({ Component, pageProps, router }: AppProps) {
   }
 
   return (
-    <main className="flex min-h-screen min-w-screen overflow-hidden p-2 bg-stone-100">
+    <main className="flex min-h-screen min-w-screen overflow-hidden p-2">
+      <Head>
+        <title>{SITE_TITLE}</title>
+        <meta name="description" content={SITE_DESCRIPTION} />
+        <link rel="canonical" href={SITE_URL} />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={SITE_URL} />
+        <meta property="og:title" content={SITE_TITLE} />
+        <meta property="og:description" content={SITE_DESCRIPTION} />
+        <meta property="og:site_name" content="Cody Miller" />
+
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content={SITE_TITLE} />
+        <meta name="twitter:description" content={SITE_DESCRIPTION} />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON_LD }}
+        />
+      </Head>
+
       <motion.div className="flex flex-1 bg-stone-200 rounded-xl">
         <div className="flex-1 flex justify-center py-[15vh] overflow-y-auto">
           <LayoutGroup>

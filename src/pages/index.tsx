@@ -1,7 +1,5 @@
 import AnimatedText from "@/components/animated-text";
 import HoverPreview from "@/components/hover-preview";
-import { Spotify } from "@/components/spotify";
-import type { Project, WorkItem } from "@/utils/constants";
 import { PROJECTS, WORK_ITEMS } from "@/utils/constants";
 import getPreviewUrl from "@/utils/get-preview-url";
 import {
@@ -150,10 +148,7 @@ export default function Home() {
         artificialDelay={0.3}
       />
 
-      <div
-        className="flex flex-col gap-3 mt-3"
-        onMouseLeave={clearWorkHover}
-      >
+      <div className="flex flex-col gap-3 mt-3" onMouseLeave={clearWorkHover}>
         {WORK_ITEMS.map((item, i) => (
           <ItemRow
             key={item.slug}
