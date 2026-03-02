@@ -4,8 +4,6 @@ import {
   MotionNodeAnimationOptions,
 } from "motion/react";
 
-const POPOVER_GAP = 12;
-
 const PREVIEW_TRANSITION = {
   initial: {
     opacity: 0,
@@ -40,7 +38,8 @@ function HoverPreview({
           style={{
             // probably replace with a light weight popover library or something, this currently doesnt do edge detection.
             top: anchorRect.top,
-            left: anchorRect.right + POPOVER_GAP,
+            left: anchorRect.right + 12,
+            willChange: "transform, opacity, filter",
           }}
           initial={PREVIEW_TRANSITION.initial}
           animate={PREVIEW_TRANSITION.animate}

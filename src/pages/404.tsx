@@ -1,6 +1,6 @@
 import AnimatedText from "@/components/animated-text";
-import Link from "next/link";
 import { motion, type MotionNodeAnimationOptions } from "motion/react";
+import Link from "next/link";
 
 const ELEMENT_ANIMATION = {
   initial: {
@@ -31,12 +31,20 @@ export default function NotFound() {
             text="404"
           />
 
-          <motion.p className="text-stone-500 mt-2" {...ELEMENT_ANIMATION}>
+          <motion.p
+            className="text-stone-500 mt-2 will-change-[transform,opacity,filter]"
+            animate={ELEMENT_ANIMATION.animate}
+            initial={ELEMENT_ANIMATION.initial}
+            transition={ELEMENT_ANIMATION.transition}
+          >
             this page doesn't exist
           </motion.p>
 
           <motion.div
-            {...ELEMENT_ANIMATION}
+            className="will-change-[transform,opacity,filter]"
+            style={{ willChange: "transform, opacity, filter" }}
+            animate={ELEMENT_ANIMATION.animate}
+            initial={ELEMENT_ANIMATION.initial}
             transition={{ ...ELEMENT_ANIMATION.transition, delay: 0.5 }}
           >
             <Link

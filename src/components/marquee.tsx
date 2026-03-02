@@ -61,7 +61,7 @@ export function Marquee({
               }
             : undefined
         }
-        className="whitespace-nowrap"
+        className="whitespace-nowrap will-change-transform mr-6"
       >
         {children}
       </motion.div>
