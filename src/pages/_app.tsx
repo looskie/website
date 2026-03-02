@@ -1,10 +1,13 @@
 import AnimatedText from "@/components/animated-text";
+import { GitHubIcon, LinkedInIcon, XIcon } from "@/components/icons";
 import { Spotify } from "@/components/spotify";
+import { SOCIALS } from "@/utils/constants";
 import "@/globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import {
   LayoutGroup,
   motion,
+  type MotionNodeAnimationOptions,
   type Transition,
   useMotionValue,
   useMotionValueEvent,
@@ -56,8 +59,35 @@ const JSON_LD = JSON.stringify({
   name: "Cody Miller",
   url: SITE_URL,
   jobTitle: "Software Engineer & Designer",
-  sameAs: ["https://github.com/looskie"],
+  sameAs: [
+    "https://github.com/looskie",
+    "https://x.com/devlooskie",
+    "https://linkedin.com/in/devlooskie",
+  ],
 });
+
+const SOCIAL_ANIMATION = {
+  initial: {
+    opacity: 0,
+    y: 5,
+    filter: "blur(4px)",
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+  },
+  transition: {
+    duration: 1,
+    ease: [0.2, 0.65, 0.3, 0.9],
+  },
+} as const satisfies MotionNodeAnimationOptions;
+
+const SOCIAL_ICONS: Record<string, React.ReactNode> = {
+  GitHub: <GitHubIcon />,
+  X: <XIcon />,
+  LinkedIn: <LinkedInIcon />,
+};
 
 export default function App({ Component, pageProps, router }: AppProps) {
   const ref = useRef<HTMLHeadingElement>(null);
@@ -157,6 +187,27 @@ export default function App({ Component, pageProps, router }: AppProps) {
                     text="software engineer & designer"
                     element="p"
                   />
+
+                  <div className="flex items-center gap-2 mt-1">
+                    {SOCIALS.map((social, i) => (
+                      <motion.a
+                        key={social.label}
+                        href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={social.label}
+                        className="text-stone-400 hover:text-stone-600 transition-colors"
+                        initial={SOCIAL_ANIMATION.initial}
+                        animate={SOCIAL_ANIMATION.animate}
+                        transition={{
+                          ...SOCIAL_ANIMATION.transition,
+                          delay: 0.3 + i * 0.1,
+                        }}
+                      >
+                        {SOCIAL_ICONS[social.label]}
+                      </motion.a>
+                    ))}
+                  </div>
 
                   <Component {...pageProps} />
                 </>

@@ -19,6 +19,17 @@ export type Project = {
 
 export const DISCORD_SNOWFLAKE = "207204046115831809";
 
+export type Social = {
+  label: string;
+  href: string;
+};
+
+export const SOCIALS: readonly Social[] = [
+  { label: "GitHub", href: "https://github.com/looskie" },
+  { label: "X", href: "https://x.com/devlooskie" },
+  { label: "LinkedIn", href: "https://linkedin.com/in/devlooskie" },
+];
+
 export const WORK_ITEMS: readonly WorkItem[] = [
   // {
   //   company: "Meter",
