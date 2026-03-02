@@ -103,7 +103,9 @@ const ItemRow = memo(function ItemRow({
         <div className="relative flex items-baseline justify-between gap-2 sm:gap-8 w-full">
           <div className="flex items-baseline gap-2 min-w-0">
             <span className="font-bold text-stone-700 truncate">{label}</span>
-            <span className="text-sm text-stone-500 hidden sm:inline">{role}</span>
+            <span className="text-sm text-stone-500 hidden sm:inline">
+              {role}
+            </span>
           </div>
           {date ? (
             <span className="text-sm text-stone-400 whitespace-nowrap hidden sm:inline">
@@ -112,7 +114,9 @@ const ItemRow = memo(function ItemRow({
           ) : null}
         </div>
 
-        <span className="relative text-xs text-stone-500 sm:hidden">{role}</span>
+        <span className="relative text-xs text-stone-500 sm:hidden">
+          {role}
+        </span>
 
         <span className="relative text-xs text-stone-600">{about}</span>
       </motion.div>

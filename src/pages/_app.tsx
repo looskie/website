@@ -68,7 +68,8 @@ export default function App({ Component, pageProps, router }: AppProps) {
   const fontSize = useTransform(spring, STEP_INDICES, STEP_SIZES);
   const fontSizeRem = useTransform(
     fontSize,
-    (v) => `clamp(${(v * 0.3).toFixed(2)}rem, ${(v * 3.5).toFixed(2)}vw, ${v}rem)`,
+    (v) =>
+      `clamp(${(v * 0.3).toFixed(2)}rem, ${(v * 3.5).toFixed(2)}vw, ${v}rem)`,
   );
 
   useMotionValueEvent(spring, "change", (v) => {
@@ -134,7 +135,7 @@ export default function App({ Component, pageProps, router }: AppProps) {
       </Head>
 
       <motion.div className="flex flex-1 bg-stone-200">
-        <div className="flex-1 flex justify-center px-6 py-[10vh] md:py-[15vh] overflow-y-auto">
+        <div className="flex-1 flex justify-center px-6 py-[15vh] overflow-y-auto">
           <LayoutGroup>
             <motion.div
               layout
