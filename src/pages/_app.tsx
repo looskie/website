@@ -1,6 +1,7 @@
 import AnimatedText from "@/components/animated-text";
 import { Spotify } from "@/components/spotify";
 import "@/globals.css";
+import { Analytics } from "@vercel/analytics/next";
 import {
   LayoutGroup,
   motion,
@@ -65,7 +66,10 @@ export default function App({ Component, pageProps, router }: AppProps) {
   const [expanded, setExpanded] = useState(false);
 
   const fontSize = useTransform(spring, STEP_INDICES, STEP_SIZES);
-  const fontSizeRem = useTransform(fontSize, (v) => `${v}rem`);
+  const fontSizeRem = useTransform(
+    fontSize,
+    (v) => `clamp(${(v * 0.3).toFixed(2)}rem, ${(v * 3.5).toFixed(2)}vw, ${v}rem)`,
+  );
 
   useMotionValueEvent(spring, "change", (v) => {
     if (!ref.current) {
@@ -94,11 +98,16 @@ export default function App({ Component, pageProps, router }: AppProps) {
   }, [progress]);
 
   if (router.pathname === "/404") {
-    return <Component {...pageProps} />;
+    return (
+      <>
+        <Analytics />
+        <Component {...pageProps} />
+      </>
+    );
   }
 
   return (
-    <main className="flex min-h-screen min-w-screen overflow-hidden p-2">
+    <main className="flex min-h-screen min-w-screen overflow-hidden">
       <Head>
         <title>{SITE_TITLE}</title>
         <meta name="description" content={SITE_DESCRIPTION} />
@@ -109,10 +118,14 @@ export default function App({ Component, pageProps, router }: AppProps) {
         <meta property="og:title" content={SITE_TITLE} />
         <meta property="og:description" content={SITE_DESCRIPTION} />
         <meta property="og:site_name" content="Cody Miller" />
+        <meta property="og:image" content={`${SITE_URL}/og.png`} />
+        <meta property="og:image:width" content="1248" />
+        <meta property="og:image:height" content="702" />
 
-        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={SITE_TITLE} />
         <meta name="twitter:description" content={SITE_DESCRIPTION} />
+        <meta name="twitter:image" content={`${SITE_URL}/og.png`} />
 
         <script
           type="application/ld+json"
@@ -120,12 +133,12 @@ export default function App({ Component, pageProps, router }: AppProps) {
         />
       </Head>
 
-      <motion.div className="flex flex-1 bg-stone-200 rounded-xl">
-        <div className="flex-1 flex justify-center py-[15vh] overflow-y-auto">
+      <motion.div className="flex flex-1 bg-stone-200">
+        <div className="flex-1 flex justify-center px-6 py-[10vh] md:py-[15vh] overflow-y-auto">
           <LayoutGroup>
             <motion.div
               layout
-              className="relative flex flex-col items-start"
+              className="relative flex flex-col items-start w-full md:w-auto max-w-md md:max-w-none"
               transition={NAME_WRAPPER_SPRING_CONFIG}
             >
               {expanded ? <Spotify /> : null}
@@ -153,6 +166,7 @@ export default function App({ Component, pageProps, router }: AppProps) {
           </LayoutGroup>
         </div>
       </motion.div>
+      <Analytics />
     </main>
   );
 }

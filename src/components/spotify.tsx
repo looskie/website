@@ -91,7 +91,7 @@ export function Spotify() {
             style={{
               borderRadius: 9999,
             }}
-            className="absolute -top-10 p-0.5 overflow-hidden bg-stone-200 min-w-48 max-w-md rounded-[9999px]"
+            className="absolute -top-10 p-0.5 overflow-hidden bg-stone-200 min-w-48 max-w-[calc(100vw-3rem)] sm:max-w-md rounded-[9999px]"
           >
             <AnimatePresence mode="popLayout">
               {data.spotify.album_art_url ? (
