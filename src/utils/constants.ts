@@ -5,6 +5,7 @@ export type WorkItem = {
   date: string;
   about: string;
   url: string;
+  image?: string;
 };
 
 export type Project = {
@@ -13,6 +14,7 @@ export type Project = {
   role: string;
   about: string;
   url: string;
+  image?: string;
 };
 
 export const DISCORD_SNOWFLAKE = "207204046115831809";
@@ -24,7 +26,7 @@ export const WORK_ITEMS: readonly WorkItem[] = [
     role: "fullstack engineer",
     date: "jan 2024 — feb 2026",
     about: "client-side security platform for monitoring and securing web apps",
-    url: "https://cside.dev",
+    url: "https://cside.com",
   },
   {
     company: "Bloom",
@@ -42,7 +44,8 @@ export const WORK_ITEMS: readonly WorkItem[] = [
     date: "oct 2021 — feb 2024",
     about:
       "cloud provider for deploying services, previously a co-browsing platform",
-    url: "https://hop.io",
+    url: "https://x.com/joinhop",
+    image: "hop_lander.png",
   },
   {
     company: "Gumroad",

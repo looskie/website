@@ -1,3 +1,5 @@
+// TODO: probably replace with a light weight popover library or something, this currently doesnt do edge detection.
+
 import {
   AnimatePresence,
   motion,
@@ -8,10 +10,12 @@ const PREVIEW_TRANSITION = {
   initial: {
     opacity: 0,
     filter: "blur(4px)",
+    x: -4,
   },
   animate: {
     opacity: 1,
     filter: "blur(0px)",
+    x: 0,
   },
   transition: {
     type: "spring",
@@ -36,7 +40,6 @@ function HoverPreview({
           layoutId="hover-preview"
           className="w-[320] fixed z-50 pointer-events-none overflow-hidden rounded-lg border border-stone-300/50 shadow-lg bg-stone-200"
           style={{
-            // probably replace with a light weight popover library or something, this currently doesnt do edge detection.
             top: anchorRect.top,
             left: anchorRect.right + 12,
             willChange: "transform, opacity, filter",
