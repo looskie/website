@@ -118,7 +118,6 @@ export default function App({ Component, pageProps, router }: AppProps) {
         <meta property="og:url" content={SITE_URL} />
         <meta property="og:title" content={SITE_TITLE} />
         <meta property="og:description" content={SITE_DESCRIPTION} />
-        <meta property="og:site_name" content="Cody Miller" />
         <meta property="og:image" content={`${SITE_URL}/og.png`} />
         <meta property="og:image:width" content="1248" />
         <meta property="og:image:height" content="702" />

@@ -119,6 +119,7 @@ const ItemRow = memo(function ItemRow({
         </span>
 
         <span className="relative text-xs text-stone-600">{about}</span>
+        <img src={previewUrl} alt="" className="hidden" fetchPriority="low" />
       </motion.div>
     </a>
   );
