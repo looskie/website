@@ -151,7 +151,7 @@ export default function Home() {
       <AnimatedText
         className="text-xl mt-4 font-bold"
         element="h2"
-        text="wrk"
+        text="work"
         artificialDelay={0.3}
       />
 
@@ -177,7 +177,7 @@ export default function Home() {
       <AnimatedText
         className="text-xl mt-4 font-bold"
         element="h2"
-        text="prjcts"
+        text="projects"
         artificialDelay={0.3}
       />
 
