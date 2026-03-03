@@ -138,7 +138,7 @@ export default function App({ Component, pageProps, router }: AppProps) {
   }
 
   return (
-    <main className="flex min-h-screen min-w-screen overflow-hidden">
+    <main className="flex h-full w-full overflow-hidden">
       <Head>
         <title>{SITE_TITLE}</title>
         <meta name="description" content={SITE_DESCRIPTION} />
