@@ -6,7 +6,7 @@
       "name": "workers",
       "dependencies": {
         "@kaito-http/core": "4.0.0-beta.29",
-        "lastfm-sdk": "^0.1.0",
+        "lastfm-sdk": "^1.0.0",
       },
       "devDependencies": {
         "@cloudflare/workers-types": "^4.20260301.1",
@@ -170,7 +170,7 @@
 
     "kleur": ["kleur@4.1.5", "", {}, "sha512-o+NO+8WrRiQEE4/7nwRJhN1HWpVmJm511pBHUxPLtp0BUISzlBplORYSmTclCnJvQq2tKu/sgl3xVpkc7ZWuQQ=="],
 
-    "lastfm-sdk": ["lastfm-sdk@0.1.0", "", { "dependencies": { "pathcat": "^1.5.1" }, "peerDependencies": { "typescript": "^5" } }, "sha512-k2qRja3VK/k5UsM+AXrnJfj9PCeUYMW5gXKL2XqkUZk1qWdS888sjgC+XTLUal+3h3JljsjTEIkc2x5BiGIgyw=="],
+    "lastfm-sdk": ["lastfm-sdk@1.0.0", "", { "dependencies": { "pathcat": "^1.5.1" }, "peerDependencies": { "typescript": "^5" } }, "sha512-yayyhjaWwkrYVXcX3Ak+rb1/CajbTYlEIGGi+Wd3GqjDoCDbZlHszGVeARdeJ05DFx7axk5Qy8O0aQ3fz4CodA=="],
 
     "miniflare": ["miniflare@4.20260305.0", "", { "dependencies": { "@cspotcode/source-map-support": "0.8.1", "sharp": "^0.34.5", "undici": "7.18.2", "workerd": "1.20260305.0", "ws": "8.18.0", "youch": "4.1.0-beta.10" }, "bin": { "miniflare": "bootstrap.js" } }, "sha512-jVhtKJtiwaZa3rI+WgoLvSJmEazDsoUmAPYRUmEe2VO6VSbvkhbnDRm+dsPbYRatgNIExwrpqG1rv96jHiSb0w=="],
 

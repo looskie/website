@@ -132,7 +132,7 @@ export function Spotify() {
 
       setSpotify({
         song: res.lastTrack.name,
-        artist: res.lastTrack.artist["#text"],
+        artist: res.lastTrack.artist.name,
         albumArtUrl: albumArt,
         isPlaying: false,
       });
