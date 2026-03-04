@@ -122,7 +122,7 @@ export function Spotify() {
     // last resort, fall back to my last.fm data to show (maybe) stale data.
     // why do i say "stale"? mainly because i must finish a song for it to be considered a "scrobble"
     // otherwise it would omit it from the list.
-    spotifyAPI.get("/v1/status", {}).then((res) => {
+    spotifyAPI.get("/v1/status").then((res) => {
       if (!res.lastTrack) return;
 
       const albumArt =
