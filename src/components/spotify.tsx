@@ -1,11 +1,13 @@
 import { Marquee } from "@/components/marquee";
 import { DISCORD_SNOWFLAKE } from "@/utils/constants";
+import { spotifyAPI } from "@/utils/spotify";
 import {
   AnimatePresence,
   motion,
   MotionNodeAnimationOptions,
 } from "motion/react";
-import { useLanyardWS } from "use-lanyard";
+import { useEffect, useRef, useState } from "react";
+import { Types, useLanyardWS } from "use-lanyard";
 
 const EQUALIZER_DELAYS = [0, 0.15, 0.3];
 
@@ -73,12 +75,73 @@ const SPOTIFY_PILL_ANIMATION = {
   },
 } as const satisfies MotionNodeAnimationOptions;
 
+interface SpotifyState {
+  song: string;
+  artist: string;
+  albumArtUrl: string;
+  isPlaying: boolean;
+}
+
 export function Spotify() {
   const data = useLanyardWS(DISCORD_SNOWFLAKE);
+  const [spotify, setSpotify] = useState<SpotifyState | null>(null);
+  const staleWSData = useRef<Types.Spotify | null>(null);
+
+  const currentSong = data?.spotify?.song;
+  const isConnected = data !== undefined;
+
+  useEffect(() => {
+    if (!isConnected) {
+      // if we dont have data, chances are we havent even connected to the socket yet
+      return;
+    }
+
+    if (data?.spotify) {
+      setSpotify({
+        song: data.spotify.song,
+        artist: data.spotify.artist ?? "",
+        albumArtUrl: data.spotify.album_art_url ?? "",
+        isPlaying: true,
+      });
+
+      staleWSData.current = data.spotify;
+      return;
+    }
+
+    // if lanyard reports no spotify data, but we have a stale value of it, lets use that instead
+    // of making a new API request
+    if (spotify && staleWSData.current !== null) {
+      setSpotify({
+        ...spotify,
+        isPlaying: false,
+      });
+
+      return;
+    }
+
+    // last resort, fall back to my last.fm data to show (maybe) stale data.
+    // why do i say "stale"? mainly because i must finish a song for it to be considered a "scrobble"
+    // otherwise it would omit it from the list.
+    spotifyAPI.get("/v1/status").then((res) => {
+      if (!res.lastTrack) return;
+
+      const albumArt =
+        res.lastTrack.image.find((img) => img.size === "extralarge")?.[
+          "#text"
+        ] ?? "";
+
+      setSpotify({
+        song: res.lastTrack.name,
+        artist: res.lastTrack.artist["#text"],
+        albumArtUrl: albumArt,
+        isPlaying: false,
+      });
+    });
+  }, [currentSong, isConnected]);
 
   return (
     <AnimatePresence>
-      {data?.spotify ? (
+      {spotify ? (
         <motion.div
           animate={SPOTIFY_PILL_ANIMATION.animate}
           initial={SPOTIFY_PILL_ANIMATION.initial}
@@ -94,15 +157,15 @@ export function Spotify() {
             className="absolute -top-10 p-0.5 overflow-hidden bg-stone-200 min-w-48 max-w-[calc(100vw-3rem)] sm:max-w-md rounded-[9999px]"
           >
             <AnimatePresence mode="popLayout">
-              {data.spotify.album_art_url ? (
+              {spotify.albumArtUrl ? (
                 <motion.img
-                  key={data.spotify.album_art_url}
+                  key={spotify.albumArtUrl}
                   initial={GLOW_FADE.initial}
                   animate={GLOW_FADE.animate}
                   exit={GLOW_FADE.initial}
                   transition={GLOW_FADE.transition}
                   className="absolute inset-0 h-full w-full object-cover scale-150 blur-3xl saturate-200 will-change-[transform,opacity]"
-                  src={data.spotify.album_art_url}
+                  src={spotify.albumArtUrl}
                   alt=""
                 />
               ) : null}
@@ -118,7 +181,7 @@ export function Spotify() {
             >
               <AnimatePresence mode="popLayout">
                 <motion.div
-                  key={data.spotify.song}
+                  key={spotify.song}
                   className="flex items-center min-w-0 pl-2 py-2 will-change-[transform,opacity,filter]"
                   animate={SONG_CHANGE.animate}
                   initial={SONG_CHANGE.initial}
@@ -126,33 +189,33 @@ export function Spotify() {
                   transition={SONG_CHANGE.transition}
                 >
                   <div className="shrink-0">
-                    {data.spotify.album_art_url ? (
+                    {spotify.albumArtUrl ? (
                       <>
                         <motion.div layout className="relative z-10">
                           <img
                             className="size-6 rounded-lg"
-                            src={data.spotify.album_art_url}
-                            alt={`${data.spotify.song} by ${data.spotify.artist}`}
+                            src={spotify.albumArtUrl}
+                            alt={`${spotify.song} by ${spotify.artist}`}
                           />
                         </motion.div>
 
                         <img
                           className="absolute size-18 left-0 top-0 z-0 blur-3xl"
-                          src={data.spotify.album_art_url}
-                          alt={`${data.spotify.song} by ${data.spotify.artist}`}
+                          src={spotify.albumArtUrl}
+                          alt={`${spotify.song} by ${spotify.artist}`}
                         />
                       </>
                     ) : null}
                   </div>
                   <Marquee className="min-w-0">
                     <motion.span layout className="text-stone-800 text-sm pl-2">
-                      {data.spotify.song}
+                      {spotify.song}
                     </motion.span>
                     <motion.span
                       layout
                       className="text-stone-500 text-sm pl-2 whitespace-nowrap"
                     >
-                      {data.spotify.artist}
+                      {spotify.artist}
                     </motion.span>
                   </Marquee>
                 </motion.div>
@@ -164,8 +227,18 @@ export function Spotify() {
                   <motion.div
                     layout
                     key={i}
-                    className="bg-green-500 w-0.5 rounded-full origin-center will-change-transform h-2.5"
-                    animate={EQUALIZER_ANIMATION.animate}
+                    className={
+                      // im not going to install clsx/tw-merge for this one case..
+                      (spotify.isPlaying
+                        ? "bg-green-500 h-2.5"
+                        : "bg-stone-400 h-1") +
+                      " w-0.5 rounded-full origin-center will-change-transform"
+                    }
+                    animate={
+                      spotify.isPlaying
+                        ? EQUALIZER_ANIMATION.animate
+                        : undefined
+                    }
                     transition={{
                       ...EQUALIZER_ANIMATION.transition,
                       delay,
