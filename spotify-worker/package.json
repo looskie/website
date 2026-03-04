@@ -1,5 +1,5 @@
 {
-  "name": "workers",
+  "name": "spotify-worker",
   "version": "1.0.0",
   "private": true,
   "scripts": {
