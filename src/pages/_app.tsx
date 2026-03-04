@@ -1,7 +1,7 @@
 import AnimatedText from "@/components/animated-text";
 import { GitHubIcon, LinkedInIcon, XIcon } from "@/components/icons";
 import { Spotify } from "@/components/spotify";
-import { SOCIALS } from "@/utils/constants";
+import { PROJECTS, SOCIALS, WORK_ITEMS } from "@/utils/constants";
 import "@/globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import {
@@ -212,6 +212,38 @@ export default function App({ Component, pageProps, router }: AppProps) {
                   <Component {...pageProps} />
                 </>
               ) : null}
+
+              <noscript>
+                <p>software engineer & designer</p>
+                <nav>
+                  {SOCIALS.map((social) => (
+                    <a key={social.label} href={social.href}>
+                      {social.label}
+                    </a>
+                  ))}
+                </nav>
+
+                <h2>work</h2>
+                {WORK_ITEMS.map((item) => (
+                  <div key={item.slug}>
+                    <a href={item.url}>
+                      <strong>{item.company}</strong> — {item.role}
+                    </a>
+                    <p>{item.about}</p>
+                    <span>{item.date}</span>
+                  </div>
+                ))}
+
+                <h2>projects</h2>
+                {PROJECTS.map((project) => (
+                  <div key={project.slug}>
+                    <a href={project.url}>
+                      <strong>{project.name}</strong> — {project.role}
+                    </a>
+                    <p>{project.about}</p>
+                  </div>
+                ))}
+              </noscript>
             </motion.div>
           </LayoutGroup>
         </div>
