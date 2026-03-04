@@ -25,5 +25,5 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts"
   ],
-  "exclude": ["node_modules", "spotify-worker"]
+  "exclude": ["node_modules"]
 }
