@@ -123,18 +123,26 @@ export function Spotify() {
     // why do i say "stale"? mainly because i must finish a song for it to be considered a "scrobble"
     // otherwise it would omit it from the list.
     spotifyAPI.get("/v1/status").then((res) => {
-      if (!res.lastTrack) return;
+      const targetTrack =
+        res.recentTracks.recenttracks.track.find(
+          (t) => t["@attr"]?.nowplaying === "true",
+        ) ??
+        res.lastTrack ??
+        null;
+
+      if (!targetTrack) return;
 
       const albumArt =
-        res.lastTrack.image.find((img) => img.size === "extralarge")?.[
-          "#text"
-        ] ?? "";
+        targetTrack.image.find((img) => img.size === "extralarge")?.["#text"] ??
+        "";
+
+      const isPlaying = targetTrack["@attr"]?.nowplaying === "true";
 
       setSpotify({
-        song: res.lastTrack.name,
-        artist: res.lastTrack.artist.name,
+        song: targetTrack.name,
+        artist: targetTrack.artist.name,
         albumArtUrl: albumArt,
-        isPlaying: false,
+        isPlaying: isPlaying,
       });
     });
   }, [currentSong, isConnected]);
