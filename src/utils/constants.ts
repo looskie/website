@@ -31,14 +31,14 @@ export const SOCIALS: readonly Social[] = [
 ];
 
 export const WORK_ITEMS: readonly WorkItem[] = [
-  // {
-  //   company: "Meter",
-  //   slug: "meter",
-  //   role: "fullstack engineer",
-  //   date: "mar 2026 - present",
-  //   about: "enterprise networking built from the ground up.",
-  //   url: "https://meter.com",
-  // },
+  {
+    company: "Meter",
+    slug: "meter",
+    role: "fullstack engineer",
+    date: "mar 2026 - present",
+    about: "rebuilding the entire networking stack from the ground up.",
+    url: "https://meter.com",
+  },
   {
     company: "cside",
     slug: "cside",
